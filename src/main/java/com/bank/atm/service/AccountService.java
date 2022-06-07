@@ -32,6 +32,9 @@ public class AccountService {
     @Autowired
     private DenominationsRepository denominationsRepository;
 
+    @Autowired
+    private AccontBussinessLogic accontBussinessLogic;
+
     public List<Account> getAccounts() {
         List<Account> accounts = new ArrayList<>();
         accountRepository.findAll().forEach(accounts::add);
@@ -65,12 +68,13 @@ public class AccountService {
         account.setOpeningBalance(account.getOpeningBalance() - requestedAmount);
 
         ATMCash atmCash = processDenominations(atm.getId(), requestedAmount);
-
-        atmRepository.save(atm);
-        accountRepository.save(account);
         atmCash.setRemainingBalance(account.getOpeningBalance());
-        updateDenominations(atmCash, atm.getId());
 
+        /*We need to update/reduce denominations in atm,
+            deduct funds from atm &
+            deduct amount from accounts on each withdrawal*/
+
+        accontBussinessLogic.processAccountUpdates(atm, account, atmCash);
         return atmCash;
     }
 
@@ -140,33 +144,6 @@ public class AccountService {
 
     private void sortDenominationsByDesc(List<Denomination> denominations) {
         Collections.sort(denominations, new DenominationComparator());
-    }
-
-    private void updateDenominations(ATMCash atmCash, int atmId) {
-        List<Denomination> atmDenominations = denominationsRepository.findByatmId(atmId);
-
-        for (Denomination atmDenomination : atmDenominations){
-            if (atmDenomination.getDenomination() == ATMDenomination.FIFTY.value()
-                    && atmCash.getNoOf50Denominations() > 0) {
-                atmDenomination.setCount(atmDenomination.getCount() - atmCash.getNoOf50Denominations());
-                denominationsRepository.save(atmDenomination);
-            }
-            else if (atmDenomination.getDenomination() == ATMDenomination.TWENTY.value()
-                    && atmCash.getNoOf20Denominations() > 0) {
-                atmDenomination.setCount(atmDenomination.getCount() - atmCash.getNoOf20Denominations());
-                denominationsRepository.save(atmDenomination);
-            }
-            else if (atmDenomination.getDenomination() == ATMDenomination.TEN.value()
-                    && atmCash.getNoOf10Denominations() > 0) {
-                atmDenomination.setCount(atmDenomination.getCount() - atmCash.getNoOf10Denominations());
-                denominationsRepository.save(atmDenomination);
-            }
-            else if (atmDenomination.getDenomination() == ATMDenomination.FIVE.value()
-                    && atmCash.getNoOf5Denominations() > 0) {
-                atmDenomination.setCount(atmDenomination.getCount() - atmCash.getNoOf5Denominations());
-                denominationsRepository.save(atmDenomination);
-            }
-        }
     }
 
     private Account validateAccount(int accountNumber, int pin) throws InvalidCredentialsException {
