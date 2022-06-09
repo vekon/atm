@@ -12,32 +12,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 @RestController
+@RequestMapping("/atms")
 public class ATMController {
 
     @Autowired
     private ATMService atmService;
 
-    @RequestMapping("/atms")
+    @RequestMapping
     public List<ATM> atms() {
         return atmService.getATMs();
     }
 
-    @RequestMapping("/atms/{atmId}")
+    @RequestMapping("/{atmId}")
     public ATM atm(@PathVariable int atmId) {
         return atmService.getATM(atmId);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value="/atms")
+    @RequestMapping(method = RequestMethod.POST)
     public void createATM(@RequestBody ATM atm) {
         atmService.createATM(atm);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value="/atms")
+    @RequestMapping(method = RequestMethod.PUT)
     public void updateATM(@RequestBody ATM atm) {
         atmService.updateATM(atm);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value="/atms/{atmId}")
+    @RequestMapping(method = RequestMethod.DELETE, value="/{atmId}")
     public void deleteATM(@PathVariable int atmId) {
         atmService.deleteATM(atmId);
     }

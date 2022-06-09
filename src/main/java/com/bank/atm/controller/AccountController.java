@@ -20,32 +20,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @RestController
+@RequestMapping("/accounts")
 public class AccountController extends BaseController{
 
     @Autowired
     private AccountService accountService;
 
-    @RequestMapping("/accounts")
+    @RequestMapping
     public List<Account> accounts() {
         return accountService.getAccounts();
     }
 
-    @RequestMapping("/accounts/{accountNumber}")
+    @RequestMapping("/{accountNumber}")
     public Account account(@PathVariable int accountNumber) {
         return accountService.getAccount(accountNumber);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value="/accounts")
+    @RequestMapping(method = RequestMethod.POST)
     public void createAccount(@RequestBody Account account) {
         accountService.createAccount(account);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value="/accounts")
+    @RequestMapping(method = RequestMethod.PUT)
     public void updateAccount(@RequestBody Account account) {
         accountService.updateAccount(account);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value="/accounts/{accountNumber}")
+    @RequestMapping(method = RequestMethod.DELETE, value="/{accountNumber}")
     public void deleteAccount(@PathVariable int accountNumber) {
         accountService.deleteAccount(accountNumber);
     }

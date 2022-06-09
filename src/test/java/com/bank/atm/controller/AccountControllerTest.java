@@ -31,6 +31,7 @@ public class AccountControllerTest {
     @Autowired
     MockMvc mockMvc;
 
+
     @Test
     public void getAccounts_Test() throws Exception{
         Account account1 = new Account(2,123456789, 1234, 800, 200);
