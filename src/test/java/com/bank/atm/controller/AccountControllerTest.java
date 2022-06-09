@@ -1,4 +1,4 @@
-package com.bank.atm.tests;
+package com.bank.atm.controller;
 
 import com.bank.atm.controller.AccountController;
 import com.bank.atm.model.Account;

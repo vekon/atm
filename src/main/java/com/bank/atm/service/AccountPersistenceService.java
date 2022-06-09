@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class AccontBussinessLogic {
+public class AccountPersistenceService {
 
     @Autowired
     private AccountRepository accountRepository;

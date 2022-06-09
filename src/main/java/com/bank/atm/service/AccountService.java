@@ -33,7 +33,7 @@ public class AccountService {
     private DenominationsRepository denominationsRepository;
 
     @Autowired
-    private AccontBussinessLogic accontBussinessLogic;
+    private AccountPersistenceService accountPersistenceService;
 
     public List<Account> getAccounts() {
         List<Account> accounts = new ArrayList<>();
@@ -74,7 +74,7 @@ public class AccountService {
             deduct funds from atm &
             deduct amount from accounts on each withdrawal*/
 
-        accontBussinessLogic.processAccountUpdates(atm, account, atmCash);
+        accountPersistenceService.processAccountUpdates(atm, account, atmCash);
         return atmCash;
     }
 
