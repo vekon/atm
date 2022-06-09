@@ -28,14 +28,16 @@
 							"raw": "{\r\n    \"accountNumber\": \"34512346\",\r\n    \"pin\": 6789\r\n}"
 						},
 						"url": {
-							"raw": "localhost:7676/accounts/35512346",
+							"raw": "localhost:7676/atm/api/accounts/123456789",
 							"host": [
 								"localhost"
 							],
 							"port": "7676",
 							"path": [
+								"atm",
+								"api",
 								"accounts",
-								"35512346"
+								"123456789"
 							]
 						}
 					},
@@ -47,12 +49,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:7676/accounts",
+							"raw": "localhost:7676/atm/api/accounts",
 							"host": [
 								"localhost"
 							],
 							"port": "7676",
 							"path": [
+								"atm",
+								"api",
 								"accounts"
 							]
 						}
@@ -75,15 +79,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"accountNumber\":987654321,\r\n    \"pin\": 4321,\r\n    \"openingBalance\":1230,\r\n    \"overDraft\":150\r\n}"
+							"raw": "{\r\n    \"accountNumber\":543254321,\r\n    \"pin\": 4321,\r\n    \"openingBalance\":1230,\r\n    \"overDraft\":150\r\n}"
 						},
 						"url": {
-							"raw": "localhost:7676/accounts",
+							"raw": "localhost:7676/atm/api/accounts",
 							"host": [
 								"localhost"
 							],
 							"port": "7676",
 							"path": [
+								"atm",
+								"api",
 								"accounts"
 							]
 						}
@@ -109,12 +115,14 @@
 							"raw": "{\r\n    \"accountNumber\": \"34512346\",\r\n    \"pin\": 6789\r\n}"
 						},
 						"url": {
-							"raw": "localhost:7676/accounts/12345999",
+							"raw": "localhost:7676/atm/api/accounts/12345999",
 							"host": [
 								"localhost"
 							],
 							"port": "7676",
 							"path": [
+								"atm",
+								"api",
 								"accounts",
 								"12345999"
 							]
@@ -141,12 +149,14 @@
 							"raw": "{\r\n    \"id\":3,\r\n    \"accountNumber\":12345888,\r\n    \"pin\": 1500,\r\n    \"openingBalance\":800,\r\n    \"overDraft\":40\r\n}"
 						},
 						"url": {
-							"raw": "localhost:7676/accounts",
+							"raw": "localhost:7676/atm/api/accounts",
 							"host": [
 								"localhost"
 							],
 							"port": "7676",
 							"path": [
+								"atm",
+								"api",
 								"accounts"
 							]
 						}
@@ -159,22 +169,25 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:7676/balance?accountNumber=123456789&pin=150",
+							"raw": "localhost:7676/atm/api/accounts/balance?accountNumber=987654321&pin=4321",
 							"host": [
 								"localhost"
 							],
 							"port": "7676",
 							"path": [
+								"atm",
+								"api",
+								"accounts",
 								"balance"
 							],
 							"query": [
 								{
 									"key": "accountNumber",
-									"value": "123456789"
+									"value": "987654321"
 								},
 								{
 									"key": "pin",
-									"value": "150"
+									"value": "4321"
 								}
 							]
 						}
@@ -187,26 +200,29 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:7676/withdraw?accountNumber=123456789&pin=1500&amount=40",
+							"raw": "localhost:7676/atm/api/accounts/withdraw?accountNumber=987654321&pin=4321&amount=555",
 							"host": [
 								"localhost"
 							],
 							"port": "7676",
 							"path": [
+								"atm",
+								"api",
+								"accounts",
 								"withdraw"
 							],
 							"query": [
 								{
 									"key": "accountNumber",
-									"value": "123456789"
+									"value": "987654321"
 								},
 								{
 									"key": "pin",
-									"value": "1500"
+									"value": "4321"
 								},
 								{
 									"key": "amount",
-									"value": "40"
+									"value": "555"
 								}
 							]
 						}
@@ -237,12 +253,14 @@
 							"raw": "{\r\n   \"availableCash\": 1500\r\n}"
 						},
 						"url": {
-							"raw": "localhost:7676/atms",
+							"raw": "localhost:7676/atm/api/atms",
 							"host": [
 								"localhost"
 							],
 							"port": "7676",
 							"path": [
+								"atm",
+								"api",
 								"atms"
 							]
 						}
@@ -269,12 +287,14 @@
 							"raw": "{\r\n   \"availableCash\": 1500\r\n}"
 						},
 						"url": {
-							"raw": "localhost:7676/atms",
+							"raw": "localhost:7676/atm/api/atms",
 							"host": [
 								"localhost"
 							],
 							"port": "7676",
 							"path": [
+								"atm",
+								"api",
 								"atms"
 							]
 						}
@@ -292,12 +312,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:7676/denominations",
+							"raw": "localhost:7676/atm/api/denominations",
 							"host": [
 								"localhost"
 							],
 							"port": "7676",
 							"path": [
+								"atm",
+								"api",
 								"denominations"
 							]
 						}
@@ -320,15 +342,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"denomination\": \"5\",\r\n    \"count\": 20,\r\n    \"atm\": {\r\n        \"id\":3\r\n    }\r\n}"
+							"raw": "{\r\n    \"denomination\": \"100\",\r\n    \"count\": 20,\r\n    \"atm\": {\r\n        \"id\":1\r\n    }\r\n}"
 						},
 						"url": {
-							"raw": "localhost:7676/denominations",
+							"raw": "localhost:7676/atm/api/denominations",
 							"host": [
 								"localhost"
 							],
 							"port": "7676",
 							"path": [
+								"atm",
+								"api",
 								"denominations"
 							]
 						}
@@ -346,12 +370,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:7676/metrics",
+							"raw": "localhost:7676/atm/api/metrics",
 							"host": [
 								"localhost"
 							],
 							"port": "7676",
 							"path": [
+								"atm",
+								"api",
 								"metrics"
 							]
 						}
@@ -364,12 +390,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:7676/health",
+							"raw": "localhost:7676/atm/api/health",
 							"host": [
 								"localhost"
 							],
 							"port": "7676",
 							"path": [
+								"atm",
+								"api",
 								"health"
 							]
 						}
@@ -382,12 +410,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:7676/dump",
+							"raw": "localhost:7676/atm/api/dump",
 							"host": [
 								"localhost"
 							],
 							"port": "7676",
 							"path": [
+								"atm",
+								"api",
 								"dump"
 							]
 						}
@@ -400,12 +430,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:7676/beans",
+							"raw": "localhost:7676/atm/api/beans",
 							"host": [
 								"localhost"
 							],
 							"port": "7676",
 							"path": [
+								"atm",
+								"api",
 								"beans"
 							]
 						}
@@ -418,12 +450,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:7676/mappings",
+							"raw": "localhost:7676/atm/api/mappings",
 							"host": [
 								"localhost"
 							],
 							"port": "7676",
 							"path": [
+								"atm",
+								"api",
 								"mappings"
 							]
 						}
